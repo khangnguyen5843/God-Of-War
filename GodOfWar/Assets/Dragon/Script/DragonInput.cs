@@ -1,0 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DragonInput : MonoBehaviour
+{
+    public float horizontalInput = 0f;
+
+    void Update()
+    {
+        horizontalInput = Input.GetAxis("Horizontal");
+        if
+    }
+
+    private void OnDisable()
+    {
+        horizontalInput = 0f;
+    }
+}
