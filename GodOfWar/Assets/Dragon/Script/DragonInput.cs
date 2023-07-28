@@ -9,7 +9,7 @@ public class DragonInput : MonoBehaviour
     void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
-        if
+        
     }
 
     private void OnDisable()

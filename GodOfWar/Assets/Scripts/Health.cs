@@ -8,7 +8,6 @@ public class Health : MonoBehaviour
     [SerializeField]
     private float maxHealth;
     private float currentHealth;
-    private SpawnPoint spawnPoint;
     
 
     private void Awake()
