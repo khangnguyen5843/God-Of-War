@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\Adventure\BE.cs" />
     <Compile Include="Assets\JumpBeforeBehavior - Copy.cs" />
     <Compile Include="Assets\Scripts\Adventure\PlayerAdventureMovement.cs" />
+    <Compile Include="Assets\Undead Survivor\Scripts\HealthSurival.cs" />
     <Compile Include="Assets\Scripts\JOBS.cs" />
     <Compile Include="Assets\Scripts\Adventure\Ek.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\MovementEnemySurvival.cs" />
@@ -81,24 +82,46 @@
     <Compile Include="Assets\Dragon\Script\DragonMovement.cs" />
     <Compile Include="Assets\Scripts\Adventure\AnimationBehaviour\AttackBehaviour.cs" />
     <Compile Include="Assets\Scripts\Adventure\AnimationBehaviour\JumpAfterBehaviour.cs" />
-    <Compile Include="Assets\Undead Survivor\Scripts\HealthSurival.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_AutoRotate.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_New.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_AutoStopLoopedEffect.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_RotateCamera.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_RandomDir.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_LightIntensityFade.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_Translate.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_LightFlicker.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_AutoDestructShuriken.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\JMO Assets\Cartoon FX (legacy)\Shaders\CFX3 Multiply Color.shader" />
+    <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR Particle Glow.shader" />
+    <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR Particle Ubershader.shader" />
+    <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR_SETTINGS.cginc" />
     <None Include="Assets\Dungeon Crawler 2D Art Pack\Spine Projects\ExportedForUnity\Monster1\Front\Monster1Front.atlas.txt" />
     <None Include="Assets\Dungeon Crawler 2D Art Pack\Spine Projects\ExportedForUnity\Character\Left\CharacterLeft.atlas.txt" />
+    <None Include="Assets\JMO Assets\Cartoon FX (legacy)\CartoonFX Free.txt" />
+    <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR.cginc" />
     <None Include="Assets\Shaders\SparKShader.shader" />
     <None Include="Assets\Dungeon Crawler 2D Art Pack\Spine Projects\ExportedForUnity\Monster2\Left\Monster2Left.atlas.txt" />
     <None Include="Assets\Dungeon Crawler 2D Art Pack\Spine Projects\ExportedForUnity\Character\Back\CharacterBack.atlas.txt" />
     <None Include="Assets\Dragon\Dragon Warrior Files\Read Me.txt" />
     <None Include="Assets\Dungeon Crawler 2D Art Pack\Spine Projects\ExportedForUnity\Monster3\Left\Monster3Left.atlas.txt" />
+    <None Include="Assets\JMO Assets\Cartoon FX Remaster\Readme Cartoon FX Remaster FREE.txt" />
     <None Include="Assets\Dungeon Crawler 2D Art Pack\Spine Projects\ExportedForUnity\Monster1\Left\Monster1Left.atlas.txt" />
+    <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Prefabs\Texts\_Make your own text effect.txt" />
+    <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR_PASSES.cginc" />
     <None Include="Assets\Dungeon Crawler 2D Art Pack\Spine Projects\ExportedForUnity\Monster1\Back\Monster1Back.atlas.txt" />
     <None Include="Assets\Dungeon Crawler 2D Art Pack\Spine Projects\ExportedForUnity\Monster2\Front\Monster2Right.atlas.txt" />
     <None Include="Assets\Dungeon Crawler 2D Art Pack\Spine Projects\ExportedForUnity\Character\Front\CharacterFront.atlas.txt" />
     <None Include="Assets\Shaders\Shark.shader" />
+    <None Include="Assets\JMO Assets\Cartoon FX (legacy)\Shaders\CFXM_MobileParticleAdd_Alpha8.shader" />
+    <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR Particle Procedural Ring.shader" />
     <None Include="Assets\Dungeon Crawler 2D Art Pack\Spine Projects\ExportedForUnity\Monster2\Back\Monster2Back.atlas.txt" />
     <None Include="Assets\Dungeon Crawler 2D Art Pack\Spine Projects\ExportedForUnity\Monster3\Back\Monster3Back.atlas.txt" />
+    <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR_URP.cginc" />
     <None Include="Assets\Dungeon Crawler 2D Art Pack\Spine Projects\ExportedForUnity\Monster3\Front\Monster3Front.atlas.txt" />
+    <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR Particle Distortion.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -904,6 +927,38 @@
     <ProjectReference Include="Unity.VisualScripting.State.csproj">
       <Project>{CECA74BA-7DAA-268E-8F9C-44C174DD5B8C}</Project>
       <Name>Unity.VisualScripting.State</Name>
+    </ProjectReference>
+    <ProjectReference Include="com.unity.cinemachine.editor.csproj">
+      <Project>{E050246D-91A9-A706-C97A-CDA26611D884}</Project>
+      <Name>com.unity.cinemachine.editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Cinemachine.csproj">
+      <Project>{1E902634-E2AA-3043-DDED-CE36C09CD4E9}</Project>
+      <Name>Cinemachine</Name>
+    </ProjectReference>
+    <ProjectReference Include="ToonyColorsPro.Demo.Editor.csproj">
+      <Project>{DBAE200E-6519-F6E3-B55C-44359BB4BDBC}</Project>
+      <Name>ToonyColorsPro.Demo.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="CFXREditor.csproj">
+      <Project>{2D52BA18-5FE1-3D0C-BFF5-90DDF3F97D87}</Project>
+      <Name>CFXREditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="CFXR.WelcomeScreen.csproj">
+      <Project>{DA2BA0DE-54CC-1B26-4EE9-82E758D9815E}</Project>
+      <Name>CFXR.WelcomeScreen</Name>
+    </ProjectReference>
+    <ProjectReference Include="CFXRRuntime.csproj">
+      <Project>{73940ABE-E1D8-5306-2E2D-68A8A74B29DA}</Project>
+      <Name>CFXRRuntime</Name>
+    </ProjectReference>
+    <ProjectReference Include="KinoBloom.Runtime.csproj">
+      <Project>{080037E1-C081-68EE-EABC-4184F33B418D}</Project>
+      <Name>KinoBloom.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="CFXRDemo.csproj">
+      <Project>{77C22622-9406-F856-C4EC-204EAB9CF9A0}</Project>
+      <Name>CFXRDemo</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
