@@ -1,17 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class WaveManager : MonoBehaviour
 {
     public List<Wave> objects = new List<Wave>();
     private int currentObjectIndex = 0;
+    private int totalWaves;
 
-    private Coroutine sequenceCoroutine;
+    public TMP_Text waveCountText;
+    public TMP_Text realTimeText;
+
+    private float gameStartTime;
+
+    private void Start()
+    {
+        totalWaves = objects.Count;
+        gameStartTime = Time.time;
+
+        // Display the initial wave count
+        int initialWaveCount = Mathf.FloorToInt((Time.time - gameStartTime) / objects[currentObjectIndex].activeTime) + 1;
+        waveCountText.text = "Wave Count: " + initialWaveCount;
+
+        // Start updating real-time text
+        StartCoroutine(UpdateRealTime());
+
+        // Start the object sequence automatically when the scene starts
+        StartCoroutine(ObjectSequence());
+    }
 
     private IEnumerator ObjectSequence()
     {
-        while (currentObjectIndex < objects.Count)
+        while (currentObjectIndex < totalWaves)
         {
             TurnOffAllObjects();
 
@@ -26,6 +47,12 @@ public class WaveManager : MonoBehaviour
 
             currentObjectIndex++;
 
+            // Calculate the current wave count based on the elapsed time and wave duration
+            int currentWaveCount = Mathf.FloorToInt((Time.time - gameStartTime) / obj.activeTime) + 1;
+
+            // Update the wave count text
+            waveCountText.text = "Wave Count: " + currentWaveCount;
+
             yield return null;
         }
 
@@ -33,10 +60,18 @@ public class WaveManager : MonoBehaviour
         currentObjectIndex = 0;
     }
 
-    private void Start()
+    private IEnumerator UpdateRealTime()
     {
-        // Start the object sequence automatically when the scene starts
-        sequenceCoroutine = StartCoroutine(ObjectSequence());
+        while (true)
+        {
+            // Calculate the elapsed real-time since the game started
+            float elapsedTime = Time.time - gameStartTime;
+
+            // Update the real-time text
+            realTimeText.text = "Real Time: " + elapsedTime.ToString("F2");
+
+            yield return null;
+        }
     }
 
     private void TurnOffAllObjects()
@@ -47,5 +82,4 @@ public class WaveManager : MonoBehaviour
             obj.isOn = false;
         }
     }
-
 }
