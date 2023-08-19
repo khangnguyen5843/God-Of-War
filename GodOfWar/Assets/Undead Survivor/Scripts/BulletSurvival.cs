@@ -6,6 +6,7 @@ public class BulletSurvival : MonoBehaviour
 {
     private Vector2 moveDir;
     private float bulletSpeed = 20f;
+    
     void Start()
     {
         Vector3 playerPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -37,6 +38,7 @@ public class BulletSurvival : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(collision.gameObject);
+            
         }
     }
 }

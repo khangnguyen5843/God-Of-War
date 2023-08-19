@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SpawnEnemySurvival : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] enemy;
     bool isRunning;
+
+    [SerializeField] NavMeshAgent agent;
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
         StartCoroutine(spawnEnemy());
     }
     private void OnEnable()
