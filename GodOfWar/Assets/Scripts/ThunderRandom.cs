@@ -5,6 +5,7 @@ using UnityEngine;
 public class ThunderRandom : MonoBehaviour
 {
     // Start is called before the first frame update
+    Animator animator;
     [SerializeField]
     GameObject Thunder;
     void Start()
@@ -22,11 +23,12 @@ public class ThunderRandom : MonoBehaviour
         while (true)
         {
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(5);
             float randomX = Random.value;
             float randomY = Random.value;
             Vector3 spawnLocation = Camera.main.ViewportToWorldPoint(new Vector3(randomX, randomY, 0));
             Instantiate(Thunder, spawnLocation,Quaternion.identity);
+            
         }
     }
 }

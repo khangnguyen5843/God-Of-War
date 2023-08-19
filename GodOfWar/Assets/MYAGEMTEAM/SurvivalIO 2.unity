@@ -15783,7 +15783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb8a161ca38ebe4e9942ede4041fb05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Thunder: {fileID: 2720381624344395054, guid: d7f29b861d93c2d4ebc8060314f0a74f, type: 3}
+  Thunder: {fileID: 3537442105591807530, guid: a0d2d44431fa64b4283b03462cd19a2d, type: 3}
 --- !u!4 &1211108491
 Transform:
   m_ObjectHideFlags: 0
