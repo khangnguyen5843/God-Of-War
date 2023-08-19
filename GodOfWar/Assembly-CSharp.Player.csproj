@@ -94,7 +94,6 @@
     <Compile Include="Assets\Undead Survivor\Scripts\BulletSurvival.cs" />
     <Compile Include="Assets\Scripts\Adventure\AnimationBehaviour\AttackBehaviour.cs" />
     <Compile Include="Assets\MYAGEMTEAM\EnemySpawner.cs" />
-    <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\MYAGEMTEAM\Wave.cs" />
     <Compile Include="Assets\MYAGEMTEAM\WaveManager.cs" />
   </ItemGroup>
