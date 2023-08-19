@@ -96,6 +96,7 @@
     <Compile Include="Assets\MYAGEMTEAM\EnemySpawner.cs" />
     <Compile Include="Assets\MYAGEMTEAM\Wave.cs" />
     <Compile Include="Assets\MYAGEMTEAM\WaveManager.cs" />
+    <Compile Include="Assets\MYAGEMTEAM\CircleFire.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

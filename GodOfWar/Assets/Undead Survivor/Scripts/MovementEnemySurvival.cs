@@ -38,7 +38,7 @@ public class MovementEnemySurvival : MonoBehaviour
         Debug.Log("Collision with Player");
         if (collision.tag.Equals("Player"))
         {
-            
+
             Destroy(gameObject);
         }
     }
