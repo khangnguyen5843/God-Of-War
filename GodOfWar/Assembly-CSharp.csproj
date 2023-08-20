@@ -70,6 +70,7 @@
     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_AutoDestructShuriken.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\PlayerInputSurvival.cs" />
     <Compile Include="Assets\Scripts\DotDemo.cs" />
+    <Compile Include="Assets\Scripts\ThunderRandom.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_RotateCamera.cs" />
     <Compile Include="Assets\Scripts\Adventure\FireMachine\NewBullet.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\ShootSurvival.cs" />
@@ -97,13 +98,13 @@
     <Compile Include="Assets\Dragon\Script\DragonMovement.cs" />
     <Compile Include="Assets\Scripts\Adventure\AnimationBehaviour\AttackBehaviour.cs" />
     <Compile Include="Assets\Scripts\Adventure\AnimationBehaviour\JumpAfterBehaviour.cs" />
-    <Compile Include="Assets\Scripts\ThunderRandom.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\JMO Assets\Cartoon FX (legacy)\Shaders\CFX3 Multiply Color.shader" />
     <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR Particle Glow.shader" />
+    <None Include="Assets\HeroEditor\Common\Shaders\GrayPaint.shader" />
     <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR Particle Ubershader.shader" />
     <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR_SETTINGS.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
