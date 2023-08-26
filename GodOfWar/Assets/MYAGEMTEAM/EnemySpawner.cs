@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour
     private Camera mainCamera;
     private List<GameObject> spawnedEnemies = new List<GameObject>();
 
+
     private void Start()
     {
         mainCamera = Camera.main;
@@ -36,6 +37,7 @@ public class EnemySpawner : MonoBehaviour
 
         GameObject enemy = Instantiate(enemyPrefab[rand], spawnPosition, Quaternion.identity);
         spawnedEnemies.Add(enemy);
+        EnemyManager.instance.AddEnemyToList(enemy);
     }
 
     private Vector3 GetSpawnPositionAtCameraEdge()

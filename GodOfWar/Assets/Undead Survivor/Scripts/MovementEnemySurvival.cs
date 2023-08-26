@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -38,7 +38,7 @@ public class MovementEnemySurvival : MonoBehaviour
         Debug.Log("Collision with Player");
         if (collision.tag.Equals("Player"))
         {
-
+            EnemyManager.instance.RemoveEnemyFromList(gameObject);
             Destroy(gameObject);
         }
     }
