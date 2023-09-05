@@ -8,6 +8,7 @@ public class SkillPanelController: MonoBehaviour
     public GameObject panel;
     public List<Button> skillButtons; 
     private List<int> selectedSkillsIndexes = new List<int>();
+    public PauseGame pauseGame;
 
     private void Start()
     {
@@ -16,11 +17,13 @@ public class SkillPanelController: MonoBehaviour
             button.enabled = false;
         }
         panel.SetActive(false);
+        
     }
 
     public void ActivateSkillPanel()
     {
         Debug.Log("Test error");
+        pauseGame.Pause();
         // popup panel skill
         panel.SetActive(true);
         selectedSkillsIndexes.Clear();
