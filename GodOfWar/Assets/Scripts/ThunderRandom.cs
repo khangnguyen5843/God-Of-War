@@ -31,4 +31,9 @@ public class ThunderRandom : MonoBehaviour
             
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+    }
 }

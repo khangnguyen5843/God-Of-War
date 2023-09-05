@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +8,8 @@ public class CircleFire : MonoBehaviour
     [SerializeField] private SpriteRenderer sphereFire;
     [SerializeField] private Collider2D sphereSphere;
     [SerializeField] private bool isCircleFire;
+
+    [SerializeField] private int damage = 10;
 
     private void OnEnable()
     {
@@ -23,12 +25,15 @@ public class CircleFire : MonoBehaviour
         sphereFire.enabled = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (collision.tag.Equals("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
-            /*Destroy(gameObject);*/
-           /* Destroy(collision.gameObject);*/
+            MovementEnemySurvival enemy = other.GetComponent<MovementEnemySurvival>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+            }
         }
     }
 }

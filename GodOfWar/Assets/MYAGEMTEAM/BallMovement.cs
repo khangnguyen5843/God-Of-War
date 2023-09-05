@@ -14,6 +14,7 @@ public class BallMovement : MonoBehaviour
 
     [SerializeField] private SpriteRenderer ball;
     [SerializeField] private Collider2D collider;
+    [SerializeField] private int damage = 10;
 
 
     void Start()
@@ -82,7 +83,11 @@ public class BallMovement : MonoBehaviour
 
         if (other.CompareTag("Enemy"))
         {
-            Destroy(other.gameObject);
+            MovementEnemySurvival enwmy = other.GetComponent<MovementEnemySurvival>();
+            if (enwmy != null)
+            {
+                enwmy.TakeDamage(damage);
+            }
         }
 
     }
