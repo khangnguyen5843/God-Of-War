@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/MYAGEMTEAM/Home.unity
-    guid: c1a220ae6d5caad419fcfdd0761f0505
+    path: Assets/MYAGEMTEAM/TotalScence 1.unity
+    guid: cb044b566a387234ebf385bce0f1ae1b
   - enabled: 1
     path: Assets/MYAGEMTEAM/Level 1.unity
     guid: eb16c2284fa02504fae5e0a0af4215d3

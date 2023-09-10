@@ -8,62 +8,88 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     public string itemName;
     public int statModifier;
 
-    private GameObject equipButtonGO;
-    private Button equipButton;
-    private GameObject unequipButtonGO;
-    private Button unequipButton;
+    public bool isEquipped = false;
+    private Button button;
 
-    private bool isEquiped;
-
-    private void Awake()
+    private void Start()
     {
-        equipButtonGO = transform.Find("Equip").gameObject;
-        equipButton = equipButtonGO.GetComponent<Button>();
-        equipButton.onClick.AddListener(EquipItem);
+        // Kiểm tra vị trí ban đầu của item và thiết lập trạng thái isEquipped dựa trên đó
+        if (transform.parent == InventoryManager.Instance.weaponPanel.transform
+            || transform.parent == InventoryManager.Instance.armorPanel.transform
+            || transform.parent == InventoryManager.Instance.helmetPanel.transform
+            || transform.parent == InventoryManager.Instance.shoesPanel.transform)
+        {
+            isEquipped = true;
+        }
+        else
+        {
+            isEquipped = false;
+        }
 
-        unequipButtonGO = transform.Find("Unequip").gameObject;
-        unequipButton = unequipButtonGO.GetComponent<Button>();
-        unequipButton.onClick.AddListener(UnequipItem);
+        // Tìm Button component trong item
+        button = GetComponent<Button>();
 
-        HideButtons();
-    }
-
-    public void ShowButtons(bool isEquiped)
-    {
-        this.isEquiped = isEquiped;
-        equipButtonGO.SetActive(!isEquiped);
-        unequipButtonGO.SetActive(isEquiped);
-    }
-
-    public void HideButtons()
-    {
-        equipButtonGO.SetActive(false);
-        unequipButtonGO.SetActive(false);
+        // Đăng ký sự kiện Click cho Button
+        if (button != null)
+        {
+            button.onClick.AddListener(OnClick);
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        // Do nothing when clicking with a pointer; handle click in the Button's OnClick event instead
+    }
+
+    public void OnClick()
+    {
         // Xử lý sự kiện khi người chơi nhấn vào item
-        if (eventData.clickCount == 1) // Kiểm tra single click
+        ToggleItem();
+    }
+
+    public void ToggleItem()
+    {
+        switch (type)
         {
-            SelectItem();
+            case ItemType.Weapon:
+                ToggleEquipment(InventoryManager.Instance.weaponPanel, ItemType.Weapon);
+                break;
+            case ItemType.Armor:
+                ToggleEquipment(InventoryManager.Instance.armorPanel, ItemType.Armor);
+                break;
+            case ItemType.Helmet:
+                ToggleEquipment(InventoryManager.Instance.helmetPanel, ItemType.Helmet);
+                break;
+            case ItemType.Shoes:
+                ToggleEquipment(InventoryManager.Instance.shoesPanel, ItemType.Shoes);
+                break;
+            default:
+                // Xử lý một loại item không xác định (nếu cần)
+                break;
         }
     }
 
-    private void EquipItem()
+    private void ToggleEquipment(GameObject equipmentPanel, ItemType equipmentType)
     {
-        InventoryManager.Instance.EquipItem(this);
+        if (isEquipped)
+        {
+            // Nếu item đang được equip, thực hiện lệnh Unequip
+            InventoryManager.Instance.UnequipItem(this);
+            isEquipped = false;
+        }
+        else
+        {
+            // Nếu item không được equip, thực hiện lệnh Equip
+            InventoryManager.Instance.EquipItem(this, equipmentType);
+            isEquipped = true;
+        }
+
+        // Sau khi toggle, cập nhật trạng thái của Button (nếu cần)
+        UpdateButton();
     }
 
-    private void UnequipItem()
+    private void UpdateButton()
     {
-        InventoryManager.Instance.UnequipItem(this);
-    }
-
-    private void SelectItem()
-    {
-        // Gọi khi người chơi single click vào item
-        InventoryManager.Instance.SelectItem(this);
+        // Cập nhật trạng thái của Button dựa trên trạng thái isEquipped (nếu cần)
     }
 }
-

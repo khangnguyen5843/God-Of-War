@@ -1,49 +1,50 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ItemSlot : MonoBehaviour
 {
-    private InventoryItem equippedWeapon;
+    private InventoryItem equippedItem;
     public CharacterStat characterStat; // Thêm tham chiếu đến CharacterStat script
 
-    public void EquipWeapon(InventoryItem weapon)
+
+    public void EquipItem(InventoryItem item)
     {
-        if (equippedWeapon != null)
+        if (equippedItem != null)
         {
-            // Trả vũ khí hiện tại về lại inventory
-            InventoryManager.Instance.UnequipItem(equippedWeapon);
+            // Trả item hiện tại về lại inventory
+            InventoryManager.Instance.UnequipItem(equippedItem);
         }
 
-        equippedWeapon = weapon;
+        equippedItem = item;
 
-        // Gắn vũ khí vào panel
-        weapon.transform.SetParent(transform);
-        weapon.transform.position = transform.position;
-
-        // Cập nhật thông số Strength của nhân vật
-        if (characterStat != null)
+        switch (item.type)
         {
-            characterStat.strength += equippedWeapon.statModifier;
-            characterStat.UpdateStats();
+            case ItemType.Weapon:
+                item.transform.SetParent(InventoryManager.Instance.weaponPanel.transform);
+                break;
+            case ItemType.Armor:
+                item.transform.SetParent(InventoryManager.Instance.armorPanel.transform);
+                break;
+            case ItemType.Helmet:
+                item.transform.SetParent(InventoryManager.Instance.helmetPanel.transform);
+                break;
+            case ItemType.Shoes:
+                item.transform.SetParent(InventoryManager.Instance.shoesPanel.transform);
+                break;
+            default:
+                // Xử lý một loại item không xác định (nếu cần)
+                break;
         }
+
+        item.transform.position = transform.position;
     }
 
-    public void UnequipWeapon()
+    public void UnequipItem()
     {
-        if (equippedWeapon != null)
+        if (equippedItem != null)
         {
-            // Trả vũ khí về lại inventory
-            InventoryManager.Instance.UnequipItem(equippedWeapon);
-
-            // Trừ đi thông số Strength của nhân vật
-            if (characterStat != null)
-            {
-                characterStat.strength -= equippedWeapon.statModifier;
-                characterStat.UpdateStats();
-            }
-
-            equippedWeapon = null;
+            // Trả item về lại inventory
+            InventoryManager.Instance.UnequipItem(equippedItem);
+            equippedItem = null;
         }
     }
 }

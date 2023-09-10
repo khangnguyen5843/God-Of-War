@@ -8,10 +8,6 @@ public enum ItemType
         Helmet,
         Shoes
     }
-public class Item : MonoBehaviour
-{
-    public string itemName;
-    public ItemType typeItem;
-    public int addStrength;
-    public int statModifier;
-}
+
+
+
