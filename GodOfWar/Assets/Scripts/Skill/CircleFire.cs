@@ -9,7 +9,9 @@ public class CircleFire : MonoBehaviour
     [SerializeField] private Collider2D sphereSphere;
     [SerializeField] private bool isCircleFire;
 
-    [SerializeField] private int damage = 10;
+    [SerializeField] private int damageCircle = 10;
+
+    private CharacterStat chacracterStat;
 
     private void OnEnable()
     {
@@ -25,6 +27,11 @@ public class CircleFire : MonoBehaviour
         sphereFire.enabled = false;
     }
 
+    public void SetChacterStat(CharacterStat circleDamge)
+    {
+        chacracterStat = circleDamge;
+    }
+
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
@@ -32,7 +39,10 @@ public class CircleFire : MonoBehaviour
             MovementEnemySurvival enemy = other.GetComponent<MovementEnemySurvival>();
             if (enemy != null)
             {
-                enemy.TakeDamage(damage);
+                int damageCircles = CharacterStat.Instance.CalculateDamage();
+                damageCircle = damageCircles / damageCircle;
+                enemy.TakeDamage(damageCircle);
+                Debug.Log("Circle: " + damageCircle);
             }
         }
     }

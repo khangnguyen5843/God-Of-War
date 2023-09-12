@@ -6,7 +6,7 @@ public class BulletSurvival : MonoBehaviour
 {
     private Vector2 moveDir;
     private float bulletSpeed = 20f;
-    private int damage;
+    private int damageBullet;
     private CharacterStat characterStat;
 
     void Start()
@@ -47,7 +47,7 @@ public class BulletSurvival : MonoBehaviour
                 // Truy cập CharacterStat thông qua Singleton
                 int damage = CharacterStat.Instance.CalculateDamage();
                 enemy.TakeDamage(damage);
-                Debug.Log(damage);
+                Debug.Log("Bullet"+damage);
             }
             Destroy(gameObject);
         }

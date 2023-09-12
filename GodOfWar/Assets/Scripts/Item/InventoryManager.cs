@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using System;
 using TMPro;
@@ -41,7 +42,12 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    
+    private void Start()
+    {
+    //LoadItemStatus();
+    }
+
+
     //EQUIP ITEM
     public void EquipItem(InventoryItem item, ItemType panelType)
     {
@@ -84,6 +90,8 @@ public class InventoryManager : MonoBehaviour
 
         item.isEquipped = true;
         itemsInPanel.Add(item);
+        SaveItemStatus(item, true); // Lưu trạng thái item
+
     }
 
     //Move ITEM to Inventory when unequip
@@ -95,7 +103,6 @@ public class InventoryManager : MonoBehaviour
         {
             return;
         }
-
         // Xác định vị trí content của InventoryUI
         Transform content = InventoryUI.Instance.inventoryContent;
 
@@ -122,6 +129,7 @@ public class InventoryManager : MonoBehaviour
         // Xóa item khỏi danh sách item trong panel tương ứng
         ItemType panelType = item.type;
         panelItems[panelType].Remove(item);
+        SaveItemStatus(item, false);// trạng thái item
     }
 
     //UNEQUIP ITEM IN SLOT
@@ -144,5 +152,63 @@ public class InventoryManager : MonoBehaviour
 
 
     //Hover Item
-    
+    private void SaveItemStatus(InventoryItem item, bool isEquipped)
+    {
+        string key = "ItemStatus_" + item.itemName; // Sử dụng tên item làm key
+        PlayerPrefs.SetInt(key, isEquipped ? 1 : 0); // Lưu 1 nếu đang equip, 0 nếu không
+        PlayerPrefs.Save();
+    }
+
+    public void LoadItemStatus()
+    {
+        Debug.Log("Num of inventory items: " + inventoryItems.Count);
+        InventoryItem[] temp = InventoryManager.Instance.inventoryItems.ToArray();
+        for (int i = 0; i < temp.Length; ++i)
+        {
+            var item = temp[i];
+            string key = "ItemStatus_" + item.itemName;
+            if (PlayerPrefs.HasKey(key))
+            {
+                int status = PlayerPrefs.GetInt(key);
+                item.isEquipped = status == 1; // Nếu status là 1 thì đang equip, ngược lại không
+                if (item.isEquipped)
+                {
+                    Debug.Log("I :" + i);
+                    // Thực hiện equip item vào panel tương ứng
+                    InventoryManager.Instance.EquipItem(item, item.type);
+                }
+                else
+                {
+                    // Thực hiện đưa item vào inventory
+                    InventoryManager.Instance.UnequipItem(item);
+                }
+                Debug.Log("Load IF");
+            }
+            Debug.Log("loadFor");
+        }
+       /* foreach (InventoryItem item in InventoryManager.Instance.inventoryItems)
+        {
+            string key = "ItemStatus_" + item.itemName;
+            if (PlayerPrefs.HasKey(key))
+            {
+                int status = PlayerPrefs.GetInt(key);
+                item.isEquipped = status == 1; // Nếu status là 1 thì đang equip, ngược lại không
+                if (item.isEquipped)
+                {
+                    // Thực hiện equip item vào panel tương ứng
+                    InventoryManager.Instance.EquipItem(item, item.type);
+                }
+                else
+                {
+                    // Thực hiện đưa item vào inventory
+                    InventoryManager.Instance.UnequipItem(item);
+                }
+                Debug.Log("Load IF");
+            }
+            Debug.Log("loadFor");
+        }*/
+
+    }
+
+
 }

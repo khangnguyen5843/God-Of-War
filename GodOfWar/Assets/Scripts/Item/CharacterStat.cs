@@ -41,4 +41,9 @@ public class CharacterStat : MonoBehaviour
     {
         return strength * 20 / 100;
     }
+
+    public int CalculateHealth()
+    {
+        return health;
+    }
 }

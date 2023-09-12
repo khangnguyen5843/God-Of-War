@@ -32,6 +32,8 @@ public class MovementPlayerSurvival : MonoBehaviour
     // List chứa tất cả các button kỹ năng
     [SerializeField] private SkillPanelController skillManager;
 
+    private CharacterStat characterStat;
+
 
 
     void SetAnimationDead(bool isDead)
@@ -44,7 +46,11 @@ public class MovementPlayerSurvival : MonoBehaviour
         input = GetComponent<PlayerInputSurvival>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         Dead += SetAnimationDead;
-        currentHealth = maxHealth; // Khởi đầu máu
+        //Health
+        int health = CharacterStat.Instance.CalculateHealth();
+        maxHealth = health;
+        currentHealth = maxHealth;
+        //
         UpdateHealthBar(); // Cập nhật thanh máu khi khởi đầu
         currentLevel = 1; // Đặt cấp độ ban đầu thành 1
         if (skillManager != null)
@@ -148,6 +154,12 @@ public class MovementPlayerSurvival : MonoBehaviour
     }
 
     // Hàm cập nhật thanh máu (nếu bạn có một thanh máu UI)
+
+    public void SetCharacterStat(CharacterStat healStat)
+    {
+        characterStat = healStat;
+    }
+
     void UpdateHealthBar()
     {
         if (healthSlider != null)

@@ -113,7 +113,7 @@
     <Compile Include="Assets\GUI PRO Kit - Fantasy RPG\Scripts\PanelControlFantasyRPG.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_RotateCamera.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
-    <Compile Include="Assets\Scripts\Player\ShootSurvival.cs" />
+    <Compile Include="Assets\Scripts\Skill\ShootSurvival.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
     <Compile Include="Assets\JumpBeforeBehavior - Copy.cs" />
     <Compile Include="Assets\Scripts\Item\InventoryManager.cs" />
@@ -128,7 +128,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\Scripts\Player\XP_pickup.cs" />
     <Compile Include="Assets\Scripts\Manager\SkillPanelController.cs" />
-    <Compile Include="Assets\MYAGEMTEAM\BallMovement.cs" />
+    <Compile Include="Assets\Scripts\Skill\BallMovement.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
   </ItemGroup>
   <ItemGroup>

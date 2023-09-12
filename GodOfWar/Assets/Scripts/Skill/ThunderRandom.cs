@@ -9,6 +9,7 @@ public class ThunderRandom : MonoBehaviour
     Animator animator;
     [SerializeField]
     GameObject Thunder;
+    private int damageThunder = 20;
     void Start()
     {
         StartCoroutine(SpawnThunder());
@@ -38,7 +39,7 @@ public class ThunderRandom : MonoBehaviour
 
             //DetectEnemy();
 
-            if(levelThunder == 3)
+            if (levelThunder == 3)
             {
                 var enemy1 = FindObjectsByType<MovementEnemySurvival>(FindObjectsSortMode.None);
                 GameObject enemy01 = enemy1[Random.Range(0, enemy1.Count())].gameObject;
@@ -96,8 +97,18 @@ public class ThunderRandom : MonoBehaviour
       
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+            if (other.CompareTag("Enemy"))
+            {
+                MovementEnemySurvival enemy = other.GetComponent<MovementEnemySurvival>();
+                if (enemy != null)
+                {
+                    int damageThun = CharacterStat.Instance.CalculateDamage();
+                damageThunder = damageThun + damageThunder;
+                    enemy.TakeDamage(damageThunder);
+                    Debug.Log("Thunder: " + damageThunder);
+                }
+            }
     }
 }

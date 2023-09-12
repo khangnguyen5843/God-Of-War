@@ -27,5 +27,8 @@ public class GameManager : MonoBehaviour
                 characterStat.UpdateStats();
             }
         }
+
     }
 }
+
+

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,9 +24,15 @@ public class PauseGame : MonoBehaviour
         GameIsPaused = true;
     }
 
-    public void Home()
+    public async  void Home()
     {
-        SceneManager.LoadScene("TotalScence 1");
+        var operation = SceneManager.LoadSceneAsync("TotalScence 1");
+        while (operation != null && ! operation.isDone)
+        {
+            await Task.Delay(50);
+        }
+        InventoryManager.Instance.LoadItemStatus();
+        Time.timeScale = 1f;
     }
 
     public void Volume()

@@ -5736,7 +5736,7 @@ MonoBehaviour:
   isActive: 0
   ball: {fileID: 274677637}
   collider: {fileID: 274677636}
-  damage: 50
+  damageBall: 10
 --- !u!1 &277614461
 GameObject:
   m_ObjectHideFlags: 0
@@ -90397,7 +90397,7 @@ MonoBehaviour:
   sphereFire: {fileID: 1091112942}
   sphereSphere: {fileID: 1091112944}
   isCircleFire: 0
-  damage: 5
+  damageCircle: 10
 --- !u!58 &1091112944
 CircleCollider2D:
   m_ObjectHideFlags: 0
