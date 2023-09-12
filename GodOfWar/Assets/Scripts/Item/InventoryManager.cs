@@ -186,29 +186,5 @@ public class InventoryManager : MonoBehaviour
             }
             Debug.Log("loadFor");
         }
-       /* foreach (InventoryItem item in InventoryManager.Instance.inventoryItems)
-        {
-            string key = "ItemStatus_" + item.itemName;
-            if (PlayerPrefs.HasKey(key))
-            {
-                int status = PlayerPrefs.GetInt(key);
-                item.isEquipped = status == 1; // Nếu status là 1 thì đang equip, ngược lại không
-                if (item.isEquipped)
-                {
-                    // Thực hiện equip item vào panel tương ứng
-                    InventoryManager.Instance.EquipItem(item, item.type);
-                }
-                else
-                {
-                    // Thực hiện đưa item vào inventory
-                    InventoryManager.Instance.UnequipItem(item);
-                }
-                Debug.Log("Load IF");
-            }
-            Debug.Log("loadFor");
-        }*/
-
     }
-
-
 }

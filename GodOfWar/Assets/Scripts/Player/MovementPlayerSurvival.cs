@@ -38,7 +38,7 @@ public class MovementPlayerSurvival : MonoBehaviour
 
     void SetAnimationDead(bool isDead)
     {
-        animator.SetBool("IsDead", isDead);    
+        animator.SetBool("DeathFront", isDead);    
     }
     private void Awake()
     {      
@@ -69,8 +69,8 @@ public class MovementPlayerSurvival : MonoBehaviour
         movementDirection.Normalize();
         animator.SetFloat("Speed", movementDirection.magnitude);
         transform.Translate(movementDirection * moveSpeed * Time.deltaTime);
-        if(input.horizontalInput > 0) spriteRenderer.flipX = false;
-        if(input.horizontalInput < 0) spriteRenderer.flipX = true;
+        if(input.horizontalInput > 0) transform.localScale = new Vector3(1, 1, 1);
+        if (input.horizontalInput < 0) transform.localScale = new Vector3(-1, 1, 1);
     }
     public void TakeDamage(int damage)
     {
@@ -79,7 +79,7 @@ public class MovementPlayerSurvival : MonoBehaviour
         {
             SetAnimationDead(true);
         }
-         // Đảm bảo máu không bị âm
+         // Đảm bảo máu không bị âm   
         UpdateHealthBar(); // Cập nhật thanh máu
     }
 
@@ -130,8 +130,8 @@ public class MovementPlayerSurvival : MonoBehaviour
     //EXP
     int CalculateExperienceForNextLevel()
     {
-        // Thay đổi logic tính toán kinh nghiệm cần cho cấp tiếp theo ở đây
-        return experienceToLevelUp + experienceToLevelUp * 20/100; // Ví dụ đơn giản: cứ 100 kinh nghiệm lên cấp
+
+        return experienceToLevelUp + experienceToLevelUp * 20/100;
     }
 
 
@@ -145,15 +145,12 @@ public class MovementPlayerSurvival : MonoBehaviour
         }
     }
 
-    // Hàm để thay đổi máu tối đa
     public void ChangeMaxHealth(int newMaxHealth)
     {
         maxHealth = newMaxHealth;
-        currentHealth = Mathf.Min(currentHealth, maxHealth); // Đảm bảo máu hiện tại không vượt quá máu tối đa mới
-        UpdateHealthBar(); // Cập nhật thanh máu khi máu tối đa thay đổi
+        currentHealth = Mathf.Min(currentHealth, maxHealth);
+        UpdateHealthBar();
     }
-
-    // Hàm cập nhật thanh máu (nếu bạn có một thanh máu UI)
 
     public void SetCharacterStat(CharacterStat healStat)
     {
@@ -164,7 +161,6 @@ public class MovementPlayerSurvival : MonoBehaviour
     {
         if (healthSlider != null)
         {
-            // Tính toán giá trị dựa vào máu hiện tại và máu tối đa
             float healthPercentage = (float)currentHealth / maxHealth;
             healthSlider.value = healthPercentage;
         }

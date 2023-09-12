@@ -22,6 +22,7 @@ public class CharacterStat : MonoBehaviour
         {
             Destroy(gameObject); // Đảm bảo chỉ có một đối tượng CharacterStat tồn tại
         }
+
     }
 
     private void Start()

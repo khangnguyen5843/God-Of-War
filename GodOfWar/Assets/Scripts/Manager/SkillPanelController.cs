@@ -22,6 +22,8 @@ public class SkillPanelController: MonoBehaviour
 
     public void SelectRandomSkills()
     {
+        Debug.Log("skill: " + selectedSkillsIndexes.Count);
+        
         // random skill
         while (selectedSkillsIndexes.Count < 3)
         {
@@ -37,6 +39,7 @@ public class SkillPanelController: MonoBehaviour
             skillButtons[i].gameObject.SetActive(true);
             Debug.Log("random");
         }
+        
     }
 
     public void CloseSkillPanel()

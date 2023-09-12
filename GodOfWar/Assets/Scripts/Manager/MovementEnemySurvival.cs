@@ -37,13 +37,13 @@ public class MovementEnemySurvival : MonoBehaviour
         EP.Normalize();
         if (EP.x < 0)
         {
-            spriteRenderer.flipX = true;
+            transform.localScale = new Vector3(1,1,1);
         }
         else
         {
-            spriteRenderer.flipX = false;
+            transform.localScale = new Vector3(-1, 1, 1);
         }
-        enemyAnimator.SetFloat("Speed", EP.magnitude);
+        enemyAnimator.SetFloat("Walk", EP.magnitude);
         transform.Translate(EP * enemySpeed * Time.deltaTime);
         // Điều kiện xử lý máu
         /*if (currentHealth <= 0)
